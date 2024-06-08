@@ -20,6 +20,21 @@ const config = {
     },
     extend: {
       colors: {
+        black: {
+          DEFAULT: "#000",
+          100: "#000319",
+          200: "rgba(17, 25, 40, 0.75)",
+          300: "rgba(255, 255, 255, 0.125)",
+        },
+        white: {
+          DEFAULT: "#FFF",
+          100: "#BEC1DD",
+          200: "#C1C2D3",
+        },
+        blue: {
+          "100": "#E4ECFF",
+        },
+        purple: "#CBACF9",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -72,9 +87,27 @@ const config = {
           to: { height: "0" },
         },
       },
+      moveHorizontal: {
+        "0%": {
+          transform: "translateX(-50%) translateY(-10%)",
+        },
+        "50%": {
+          transform: "translateX(50%) translateY(10%)",
+        },
+        "100%": {
+          transform: "translateX(-50%) translateY(-10%)",
+        },
+      },
+      scroll: {
+        to: {
+          transform: "translate(calc(-50% - 0.5rem))",
+        },
+      },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        scroll:
+          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
       },
     },
   },
