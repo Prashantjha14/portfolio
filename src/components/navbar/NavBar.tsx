@@ -34,7 +34,7 @@ const NavBar = () => {
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
       style={{ cursor: "auto" }}
-      className="fixed inset-x-0 top-0 z-10 mx-auto max-w-6xl border border-white/10 bg-gradient-to-br from-white/20 to-white/5 backdrop-blur md:inset-x-6 md:top-6 md:rounded-2xl"
+      className="fixed inset-x-0 top-0 z-[1000] mx-auto max-w-6xl border border-white/10 bg-gradient-to-br from-white/20 to-white/5 backdrop-blur md:inset-x-6 md:top-6 md:rounded-2xl"
     >
       <div className="flex items-center justify-between gap-1 p-5">
         <span
