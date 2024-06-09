@@ -1,8 +1,10 @@
 import type { LucideProps } from "lucide-react";
-import { Download } from "lucide-react";
+import { Download, Copy, ClipboardCopy } from "lucide-react";
 
 export const Icons = {
   download: (props: LucideProps) => <Download />,
+  copy: (props: LucideProps) => <Copy />,
+  clipboardCopy: (props: LucideProps) => <ClipboardCopy />,
   react: (props: LucideProps) => (
     <svg
       viewBox="0 -13 256 256"

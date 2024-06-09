@@ -1,6 +1,8 @@
 import NavBar from "@/components/navbar/NavBar";
 import Hero from "@/components/hero/Hero";
 import About from "@/components/about/About";
+import ClickGame from "@/components/game/ClickGame";
+import Grid from "@/components/grid/Grid";
 
 const Home = () => {
   return (
@@ -12,6 +14,8 @@ const Home = () => {
         <NavBar />
         <Hero />
         <About />
+        <ClickGame />
+        <Grid />
       </div>
     </main>
   );
