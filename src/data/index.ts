@@ -13,7 +13,7 @@ export const techStack = [
   {
     name: "MongoDB",
     img: "/images/techstack/no-name/mongo.svg",
-    nameImg: "/images/techstack/name/mongo.png",
+    nameImg: "/images/techstack/name/mongo.svg",
   },
   {
     name: "NextJs",
@@ -23,7 +23,7 @@ export const techStack = [
   {
     name: "MongoDB",
     img: "/images/techstack/no-name/mongo.svg",
-    nameImg: "/images/techstack/name/mongo.png",
+    nameImg: "/images/techstack/name/mongo.svg",
   },
 ].map((item, idx) => ({ ...item, id: idx + 1 }));
 

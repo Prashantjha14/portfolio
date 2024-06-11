@@ -1,34 +1,54 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CoolMode } from "@/components/ui/CoolMode";
 import ShimmerButton from "../ui/ShimmerButton";
+import { getCount, increaseCounter } from "@/lib/actions/clickGame.action";
+import NumberTicker from "../ui/NumberTicker";
 
 const ClickGame = () => {
-  const [disabled, setDisabled] = useState(false);
   const [count, setCount] = useState(0);
+  const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    const fetchCount = async () => {
+      try {
+        const { count } = await getCount();
+        setCount(count);
+      } catch (error) {
+        console.error("Failed to fetch count:", error);
+      }
+    };
+
+    fetchCount();
+  }, []);
 
   const increaseCount = async () => {
-    setDisabled(true);
-    setCount(count + 1);
-    setDisabled(false);
+    try {
+      if (disabled) return;
+
+      setDisabled(true);
+      const { count: newCount } = await increaseCounter();
+      setCount(newCount);
+      setDisabled(false);
+    } catch (error) {
+      console.error("Failed to increase count:", error);
+    }
   };
 
   return (
-    <section className="my-16 py-5 text-center italic md:flex md:justify-between">
+    <section className="my-16 flex flex-col items-center py-5 text-center italic">
       <div>
-        <h3 className="desc">
-          This button has been clicked {count} times! Join the game by clicking
-          now.
+        <h3 className="mt-5 text-lg text-gray-300 sm:text-2xl">
+          People have clicked this button{" "}
+          <span className="font-bold">
+            <NumberTicker value={count} direction="up" />
+          </span>{" "}
+          times! Join them by clicking now!
         </h3>
       </div>
 
-      <div className="mt-8 md:mt-0 md:self-end">
-        <CoolMode
-          options={{
-            particle:
-              "https://cdn.vox-cdn.com/thumbor/wfbQ3XccV6SxGMt1l6zBPL3Xg7o=/0x0:1192x795/1400x1050/filters:focal(596x398:597x399)/cdn.vox-cdn.com/uploads/chorus_asset/file/22312759/rickroll_4k.jpg",
-          }}
-        >
+      <div className="mt-8 md:mt-16">
+        <CoolMode>
           <ShimmerButton
             className="shadow-2xl"
             onClick={increaseCount}
