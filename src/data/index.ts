@@ -29,13 +29,29 @@ export const techStack = [
 
 export const socialMedia = [
   {
-    img: "/git.svg",
+    name: "Github",
+    img: "/images/social/github.svg",
+    link: "",
   },
   {
-    img: "/twit.svg",
+    name: "Twitter",
+    img: "/images/social/twit.svg",
+    link: "",
   },
   {
-    img: "/link.svg",
+    name: "LinkedIn",
+    img: "/images/social/link.svg",
+    link: "",
+  },
+  {
+    name: "Instagram",
+    img: "/images/social/insta.svg",
+    link: "",
+  },
+  {
+    name: "Discord",
+    img: "/images/social/disc.svg",
+    link: "",
   },
 ].map((item, idx) => ({ ...item, id: idx + 1 }));
 

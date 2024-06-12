@@ -19,7 +19,7 @@ const MagicButton = ({
 }: Props) => {
   return (
     <button
-      className="relative inline-flex h-12 w-full overflow-hidden rounded-lg p-px focus:outline-none md:mt-10 md:w-60"
+      className="relative inline-flex h-12 w-full overflow-hidden rounded-lg p-px focus:outline-none md:w-60"
       onClick={handleClick}
       disabled={disabled}
     >
