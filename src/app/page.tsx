@@ -3,6 +3,7 @@ import Hero from "@/components/hero/Hero";
 import About from "@/components/about/About";
 import ClickGame from "@/components/game/ClickGame";
 import Grid from "@/components/grid/Grid";
+import Approach from "@/components/approach/Approach";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
         <About />
         <ClickGame />
         <Grid />
+        <Approach />
       </div>
     </main>
   );
