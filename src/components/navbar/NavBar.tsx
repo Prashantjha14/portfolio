@@ -85,9 +85,11 @@ const NavBar = () => {
               <BlogButton />
             </Link>
           </div>
-          <button className="relative scale-100 overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-medium text-white transition-transform hover:scale-105 active:scale-95">
-            Contact
-          </button>
+          <Link href="#footer">
+            <button className="relative scale-100 overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-medium text-white transition-transform hover:scale-105 active:scale-95">
+              Contact
+            </button>
+          </Link>
           <button
             className="ml-2 block scale-100 text-3xl text-white/90 transition-all hover:scale-105 hover:text-white active:scale-95 lg:hidden"
             onClick={toggleNav}

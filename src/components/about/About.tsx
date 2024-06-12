@@ -9,7 +9,7 @@ const About = () => {
   return (
     <section className="border-b border-neutral-900 pb-4" id="about">
       <Heading text="About" colorText="Me" />
-      <div className="flex flex-wrap">
+      <div className="mt-7 flex flex-wrap lg:mt-0">
         <div className="w-full lg:w-1/2 lg:p-8">
           <div className="flex items-center justify-center">
             <TechStackCircles />

@@ -5,6 +5,7 @@ import ClickGame from "@/components/game/ClickGame";
 import Grid from "@/components/grid/Grid";
 import Approach from "@/components/approach/Approach";
 import Footer from "@/components/footer/Footer";
+import Testimonial from "@/components/testimonial/TestimonialCard";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
         <About />
         <ClickGame />
         <Grid />
+        <Testimonial />
         <Approach />
         <Footer />
       </div>

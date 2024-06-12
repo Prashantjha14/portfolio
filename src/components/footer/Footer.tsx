@@ -40,7 +40,7 @@ const Footer = () => {
               key={id}
               className="flex size-10 cursor-pointer items-center justify-center rounded-lg border border-black-300 bg-black-200 bg-opacity-[0.75] saturate-150 backdrop-blur-lg"
             >
-              <Link href={link}>
+              <Link href={link} target="_blank">
                 <Image src={img} alt={name} width={20} height={20} />
               </Link>
             </div>

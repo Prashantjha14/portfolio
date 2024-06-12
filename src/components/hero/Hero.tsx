@@ -2,6 +2,7 @@ import React from "react";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import MagicButton from "@/components/ui/MagicButton";
 import { Icons } from "../shared/Icons";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -22,13 +23,13 @@ const Hero = () => {
             , a Next.js Developer based in India.
           </p>
 
-          <a href="#about">
+          <Link href="#about">
             <MagicButton
               title="Get My Resume"
               icon={<Icons.download />}
               position="right"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
