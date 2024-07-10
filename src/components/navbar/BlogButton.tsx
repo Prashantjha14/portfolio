@@ -1,8 +1,20 @@
 "use client";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import type { PostMetadata } from "@/types/hashnode";
+import Image from "next/image";
+import Link from "next/link";
 
-const BlogButton = () => {
+const BlogButton = ({
+  allPosts,
+}: {
+  allPosts:
+    | {
+        node: PostMetadata;
+        cursor: string;
+      }[]
+    | null;
+}) => {
   const [selected, setSelected] = useState<boolean>(false);
 
   return (
@@ -18,7 +30,7 @@ const BlogButton = () => {
         <span className="absolute inset-0 z-0 bg-gradient-to-br from-white/20 to-white/5 opacity-0 transition-opacity group-hover:opacity-100" />
       </button>
       <AnimatePresence>
-        {selected && <Content setSelected={setSelected} />}
+        {selected && <Content setSelected={setSelected} allPosts={allPosts} />}
       </AnimatePresence>
     </>
   );
@@ -28,8 +40,15 @@ export default BlogButton;
 
 const Content = ({
   setSelected,
+  allPosts,
 }: {
   setSelected: React.Dispatch<React.SetStateAction<boolean>>;
+  allPosts:
+    | {
+        node: PostMetadata;
+        cursor: string;
+      }[]
+    | null;
 }) => {
   return (
     <motion.div
@@ -61,7 +80,7 @@ const Content = ({
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.25, ease: "easeInOut" }}
         >
-          <Blog />
+          <Blog allPosts={allPosts} />
         </motion.div>
       </div>
     </motion.div>
@@ -83,37 +102,45 @@ const Nub = () => {
   );
 };
 
-const Blog = () => {
+const Blog = ({
+  allPosts,
+}: {
+  allPosts:
+    | {
+        node: PostMetadata;
+        cursor: string;
+      }[]
+    | null;
+}) => {
   return (
     <div>
       <div className="grid grid-cols-2 gap-2">
-        <a href="#">
-          <img
-            className="mb-2 h-14 w-full rounded object-cover"
-            src="/imgs/blog/4.png"
-            alt="Placeholder image"
-          />
-          <h4 className="mb-0.5 text-sm font-medium">Lorem ipsum dolor</h4>
-          <p className="text-xs text-neutral-400">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet illo
-            quidem eos.
-          </p>
-        </a>
-        <a href="#">
-          <img
-            className="mb-2 h-14 w-full rounded object-cover"
-            src="/imgs/blog/5.png"
-            alt="Placeholder image"
-          />
-          <h4 className="mb-0.5 text-sm font-medium">Lorem ipsum dolor</h4>
-          <p className="text-xs text-neutral-400">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet illo
-            quidem eos.
-          </p>
-        </a>
+        {allPosts
+          ? allPosts.map((post, index) => (
+              <Link
+                href={`https://prashantjha14.hashnode.dev/${post.node.slug}`}
+                // target="_blank"
+                key={index}
+              >
+                <Image
+                  className="mb-2 h-14 w-full rounded object-cover"
+                  src={post.node.coverImage.url || ""}
+                  alt="Placeholder image"
+                  width={200}
+                  height={80}
+                />
+                <h4 className="mb-0.5 line-clamp-2 text-sm font-medium">
+                  {post.node.title}
+                </h4>
+                <p className="line-clamp-3 text-xs text-neutral-400">
+                  {post.node?.subtitle}
+                </p>
+              </Link>
+            ))
+          : "Loading..."}
       </div>
       <button className="ml-auto mt-4 flex items-center gap-1 text-sm text-indigo-300">
-        <span>View more</span>
+        <Link href="https://prashantjha14.hashnode.dev">View more</Link>
         {/* <FiArrowRight /> */}
       </button>
     </div>

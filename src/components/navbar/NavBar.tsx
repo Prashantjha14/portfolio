@@ -1,16 +1,29 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { navItems } from "@/data";
 import Link from "next/link";
 import MobileNav from "./MobileNav";
 import BlogButton from "./BlogButton";
+import { getPosts } from "@/lib/actions/requests";
+import type { PostMetadata } from "@/types/hashnode";
 
 const NavBar = () => {
   const { scrollY } = useScroll();
 
   const [hidden, setHidden] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [allPosts, setAllPosts] = useState<
+    { node: PostMetadata; cursor: string }[] | null
+  >(null);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      setAllPosts(await getPosts({ first: 2 }));
+    }
+
+    fetchPosts();
+  }, []);
 
   const toggleNav = () => {
     setIsMobileNavOpen((prev) => !prev);
@@ -82,7 +95,7 @@ const NavBar = () => {
         <div className="flex items-center gap-4">
           <div className="hidden lg:block">
             <Link href="/">
-              <BlogButton />
+              <BlogButton allPosts={allPosts} />
             </Link>
           </div>
           <Link href="#footer">
