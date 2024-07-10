@@ -119,7 +119,7 @@ const Blog = ({
           ? allPosts.map((post, index) => (
               <Link
                 href={`https://prashantjha14.hashnode.dev/${post.node.slug}`}
-                // target="_blank"
+                target="_blank"
                 key={index}
               >
                 <Image
@@ -140,7 +140,9 @@ const Blog = ({
           : "Loading..."}
       </div>
       <button className="ml-auto mt-4 flex items-center gap-1 text-sm text-indigo-300">
-        <Link href="https://prashantjha14.hashnode.dev">View more</Link>
+        <Link href="https://prashantjha14.hashnode.dev" target="_blank">
+          View more
+        </Link>
         {/* <FiArrowRight /> */}
       </button>
     </div>

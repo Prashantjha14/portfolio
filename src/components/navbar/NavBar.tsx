@@ -94,9 +94,7 @@ const NavBar = () => {
         </span>
         <div className="flex items-center gap-4">
           <div className="hidden lg:block">
-            <Link href="/">
-              <BlogButton allPosts={allPosts} />
-            </Link>
+            <BlogButton allPosts={allPosts} />
           </div>
           <Link href="#footer">
             <button className="relative scale-100 overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-medium text-white transition-transform hover:scale-105 active:scale-95">
